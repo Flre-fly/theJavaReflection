@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 
 public class HelloApplication extends Application {
@@ -20,11 +21,9 @@ public class HelloApplication extends Application {
         System.out.println(book);
         System.out.println(new MyBook());
 
-        Field field = bookClass.getDeclaredField("a");
-        field.setAccessible(true);
-        System.out.println(field.get(book));//book에 있는 field를 가져온다
-        field.set(book, 1234);//값 세팅하기
-        System.out.println(field.get(book));
+        Method method = bookClass.getDeclaredMethod("returnA", int.class);//int class를 인자로 받는 returnA 라는이름을 가진 메서드 호출
+        method.setAccessible(true);
+        System.out.println(method.invoke(book, 2));//instance, 2라는 인자를 넘기며 method 호출
 
 
     }
