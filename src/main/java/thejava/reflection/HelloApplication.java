@@ -14,10 +14,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         Class<?> bookClass = Class.forName("thejava.reflection.MyBook");
-        Constructor<?> constructor = bookClass.getConstructor(null);
-        MyBook book = (MyBook) constructor.newInstance();
-        System.out.println(book);
-        System.out.println(book.b);
-        System.out.println(book.c);
+        Arrays.stream(bookClass.getDeclaredAnnotations()).forEach(System.out::println);
+
     }
 }
