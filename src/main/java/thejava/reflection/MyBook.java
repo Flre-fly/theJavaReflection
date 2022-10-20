@@ -10,4 +10,12 @@ public class MyBook implements Book{
     public void read() {
         System.out.println("read!");
     }
+
+    private int returnA(int a){
+        return a;
+    }
+    public void printStr(String a){
+        System.out.println(a);
+    }
+
 }
